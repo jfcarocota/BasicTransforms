@@ -2,6 +2,7 @@
 
 
 #include "PlayerMain.h"
+//#include "Components/InputComponent.h"
 
 // Sets default values
 APlayerMain::APlayerMain()
@@ -29,6 +30,17 @@ void APlayerMain::Tick(float DeltaTime)
 void APlayerMain::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
+	InputComponent->BindAxis("Vertical", this, &APlayerMain::VerticalAxis);
+	InputComponent->BindAxis("Horizontal", this, &APlayerMain::HorizontalAxis);
 }
 
+
+void APlayerMain::VerticalAxis(float axisValue)
+{
+	AddActorLocalOffset(FVector(axisValue, 0, 0) * moveSpeed * GetWorld()->GetDeltaSeconds());
+}
+
+void APlayerMain::HorizontalAxis(float axisValue)
+{
+	AddActorLocalOffset(FVector(0, axisValue, 0) * moveSpeed * GetWorld()->GetDeltaSeconds());
+}

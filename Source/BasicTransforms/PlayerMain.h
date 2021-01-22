@@ -11,6 +11,14 @@ class BASICTRANSFORMS_API APlayerMain : public APawn
 {
 	GENERATED_BODY()
 
+private:
+
+	UPROPERTY(EditAnywhere)
+	float moveSpeed{ 1.0f };
+
+	void VerticalAxis(float axisValue);
+	void HorizontalAxis(float axisValue);
+
 public:
 	// Sets default values for this pawn's properties
 	APlayerMain();
