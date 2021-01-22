@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Bullet.h"
 #include "PlayerMain.generated.h"
 
 UCLASS()
@@ -19,9 +20,12 @@ private:
 	float rotSpeed{ 150.0f };
 	UPROPERTY(EditAnywhere)
 	bool canRotate;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class ABullet> bulletSpawn;
 
 	void VerticalAxis(float axisValue);
 	void HorizontalAxis(float axisValue);
+	void FirePressed();
 
 public:
 	// Sets default values for this pawn's properties

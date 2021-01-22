@@ -2,7 +2,7 @@
 
 
 #include "PlayerMain.h"
-//#include "Components/InputComponent.h"
+#include "Engine/World.h"
 
 // Sets default values
 APlayerMain::APlayerMain()
@@ -32,6 +32,7 @@ void APlayerMain::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	InputComponent->BindAxis("Vertical", this, &APlayerMain::VerticalAxis);
 	InputComponent->BindAxis("Horizontal", this, &APlayerMain::HorizontalAxis);
+	InputComponent->BindAction("Fire", IE_Pressed,this, &APlayerMain::FirePressed);
 }
 
 
@@ -50,4 +51,9 @@ void APlayerMain::HorizontalAxis(float axisValue)
 	{
 		AddActorLocalRotation(FRotator(0, axisValue, 0) * rotSpeed * GetWorld()->GetDeltaSeconds());
 	}
+}
+
+void APlayerMain::FirePressed()
+{
+	GetWorld()->SpawnActor<ABullet>(bulletSpawn, GetActorLocation(), GetActorRotation());
 }
