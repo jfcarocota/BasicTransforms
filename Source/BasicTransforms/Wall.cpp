@@ -2,6 +2,7 @@
 
 
 #include "Wall.h"
+#include "Bullet.h"
 
 // Sets default values
 AWall::AWall()
@@ -23,12 +24,22 @@ void AWall::BeginPlay()
 void AWall::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	if (health == 0.0f)
+	{
+		this->Destroy();
+	}
 }
 
 
 void AWall::OnOverlap(AActor* me, AActor* other)
 {
+	ABullet* bullet = Cast<ABullet>(other);
+	RecivingDamage(bullet->GetDamage());
 	other->Destroy();
+}
+
+void AWall::RecivingDamage(float damage)
+{
+	health = health - damage > 0 ? health - damage : 0.0f;
 }
 

@@ -27,6 +27,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-private:
+	float GetDamage();
 
+private:
+	UPROPERTY(EditAnywhere)
+	float damage{ 1 };
 };

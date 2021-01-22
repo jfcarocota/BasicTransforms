@@ -22,7 +22,9 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
-
+	UPROPERTY(EditAnywhere)
+	float health{ 10.0f };
+	void RecivingDamage(float damange);
 	UFUNCTION()
 	void OnOverlap(AActor* me, AActor* other);
 };

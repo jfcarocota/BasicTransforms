@@ -24,3 +24,8 @@ void ABullet::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	AddActorLocalOffset(direction * moveSpeed * DeltaTime, true);
 }
+
+float ABullet::GetDamage()
+{
+	return damage;
+}
