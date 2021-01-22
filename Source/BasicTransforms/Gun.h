@@ -10,6 +10,12 @@ UCLASS()
 class BASICTRANSFORMS_API AGun : public AActor
 {
 	GENERATED_BODY()
+
+	void Timer();
+
+	FTimerHandle timerHandle;
+	UPROPERTY(EditAnywhere)
+	float spawnTime;
 	
 public:
 	UPROPERTY(EditAnywhere)

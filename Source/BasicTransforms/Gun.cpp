@@ -16,12 +16,18 @@ AGun::AGun()
 void AGun::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->SpawnActor<AActor>(spawnObject);
+	//GetWorld()->SpawnActor<AActor>(spawnObject, GetActorLocation(), GetActorRotation());
+	GetWorldTimerManager().SetTimer(timerHandle, this, &AGun::Timer, spawnTime, true, 0.0f);
 }
 
 // Called every frame
 void AGun::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void AGun::Timer()
+{
+	GetWorld()->SpawnActor<AActor>(spawnObject, GetActorLocation(), GetActorRotation());
 }
 
