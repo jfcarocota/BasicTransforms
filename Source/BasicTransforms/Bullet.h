@@ -10,23 +10,23 @@ UCLASS()
 class BASICTRANSFORMS_API ABullet : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
-
-	UPROPERTY(EditAnywhere)
-	float moveSpeed{};
-	UPROPERTY(EditAnywhere)
-	FVector direction{};
-
-	// Sets default values for this actor's properties
-	ABullet();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
+	UPROPERTY(EditAnywhere)
+	float moveSpeed{};
+	UPROPERTY(EditAnywhere)
+	FVector direction {};
+
+	// Sets default values for this actor's properties
+	ABullet();
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+private:
 
 };

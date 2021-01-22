@@ -10,20 +10,12 @@ UCLASS()
 class BASICTRANSFORMS_API AGun : public AActor
 {
 	GENERATED_BODY()
-
+	
+private:
 	void Timer();
 
 	FTimerHandle timerHandle;
-	UPROPERTY(EditAnywhere)
-	float spawnTime;
 	
-public:
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<class AActor> spawnObject;
-
-	// Sets default values for this actor's properties
-	AGun();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -31,5 +23,15 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float spawnTime;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AActor> spawnObject;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FTransform bulletPoint;
+
+	// Sets default values for this actor's properties
+	AGun();
+
 
 };
