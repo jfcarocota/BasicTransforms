@@ -42,5 +42,12 @@ void APlayerMain::VerticalAxis(float axisValue)
 
 void APlayerMain::HorizontalAxis(float axisValue)
 {
-	AddActorLocalOffset(FVector(0, axisValue, 0) * moveSpeed * GetWorld()->GetDeltaSeconds());
+	if (!canRotate)
+	{
+		AddActorLocalOffset(FVector(0, axisValue, 0) * moveSpeed * GetWorld()->GetDeltaSeconds());
+	}
+	else
+	{
+		AddActorLocalRotation(FRotator(0, axisValue, 0) * rotSpeed * GetWorld()->GetDeltaSeconds());
+	}
 }

@@ -15,6 +15,10 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float moveSpeed{ 1.0f };
+	UPROPERTY(EditAnywhere)
+	float rotSpeed{ 150.0f };
+	UPROPERTY(EditAnywhere)
+	bool canRotate;
 
 	void VerticalAxis(float axisValue);
 	void HorizontalAxis(float axisValue);
